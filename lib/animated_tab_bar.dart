@@ -20,6 +20,26 @@ class AnimatedTabBar extends StatefulWidget {
 class _AnimatedTabBarState extends State<AnimatedTabBar> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      child: Row(
+        children: _buildTabBarItems(),
+      ),
+    );
+  }
+
+  List<Widget> _buildTabBarItems() {
+    List<Widget> _widgets = List();
+    for (int i = 0; i < widget.tabBarItems.length; i++) {
+      TabBarItem item = widget.tabBarItems[i];
+
+      _widgets.add(Row(
+        children: <Widget>[
+          Text(item.text),
+          Icon(item.icon),
+        ],
+      ));
+    }
+
+    return _widgets;
   }
 }
