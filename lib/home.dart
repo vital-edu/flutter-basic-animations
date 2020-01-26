@@ -1,3 +1,4 @@
+import 'package:fdesign/tab_bar_item.dart';
 import 'package:flutter/material.dart';
 import 'package:fdesign/animated_tab_bar.dart';
 

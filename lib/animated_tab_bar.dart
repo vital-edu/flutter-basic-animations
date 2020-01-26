@@ -1,12 +1,5 @@
+import 'package:fdesign/tab_bar_item.dart';
 import 'package:flutter/material.dart';
-
-class TabBarItem {
-  final String text;
-  final IconData icon;
-  final Color color;
-
-  TabBarItem({this.icon, this.text, this.color});
-}
 
 class AnimatedTabBar extends StatefulWidget {
   final List<TabBarItem> tabBarItems;
