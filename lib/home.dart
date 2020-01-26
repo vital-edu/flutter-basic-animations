@@ -40,24 +40,24 @@ class _HomeState extends State<Home> {
       body: AnimatedContainer(
         duration: Duration(milliseconds: 500),
         child: Center(
-          child: Padding(
-            padding:
-                const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.start,
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                Text(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                    vertical: 16.0, horizontal: 20.0),
+                child: Text(
                   'Apartments',
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
                 ),
-                ApartmentsTable(cells: widget.apartmentCells),
-              ],
-            ),
+              ),
+              ApartmentsTable(cells: widget.apartmentCells),
+            ],
           ),
         ),
-        color: widget.tabBarItems[selectedTabBarIndex].color,
+        color: Colors.white,
       ),
       bottomNavigationBar: AnimatedTabBar(
         onTap: (int index) {

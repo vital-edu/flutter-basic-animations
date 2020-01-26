@@ -17,7 +17,6 @@ class _CarrouselState extends State<ApartmentsTable> {
       child: ListView.builder(
         itemBuilder: _buildCards,
         itemCount: widget.cells.length,
-        padding: const EdgeInsets.all(8.0),
       ),
     );
   }
@@ -27,9 +26,19 @@ class _CarrouselState extends State<ApartmentsTable> {
 
     return Container(
       padding: const EdgeInsets.symmetric(
-        vertical: 8,
+        vertical: 16,
+        horizontal: 16,
+      ),
+      decoration: BoxDecoration(
+        border: BorderDirectional(
+          top: BorderSide(
+            width: 0.2,
+          ),
+        ),
       ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
@@ -44,8 +53,27 @@ class _CarrouselState extends State<ApartmentsTable> {
             height: 200,
             width: 150,
           ),
-          Text(_cell.description),
-          Text(_cell.title),
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                vertical: 8.0,
+                horizontal: 8.0,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    _cell.title,
+                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                  ),
+                  Text(
+                    _cell.description,
+                    style: TextStyle(),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
