@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 class AnimatedTabBar extends StatefulWidget {
   final List<TabBarItem> tabBarItems;
   final Duration animationDuration;
+  final Function onTap;
 
-  AnimatedTabBar({this.tabBarItems, this.animationDuration});
+  AnimatedTabBar({this.tabBarItems, this.animationDuration, this.onTap});
 
   @override
   _AnimatedTabBarState createState() => _AnimatedTabBarState();
@@ -37,14 +38,17 @@ class _AnimatedTabBarState extends State<AnimatedTabBar>
       bool isSelected = i == selectedBarIndex;
 
       _widgets.add(GestureDetector(
-        onTap: () => setState(() => selectedBarIndex = i),
+        onTap: () => setState(() {
+          selectedBarIndex = i;
+          widget.onTap(selectedBarIndex);
+        }),
         child: InkWell(
             splashColor: Colors.red,
             child: AnimatedContainer(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 color: isSelected
-                    ? Colors.redAccent.withOpacity(0.15)
+                    ? item.color.withOpacity(0.15)
                     : Colors.transparent,
               ),
               duration: widget.animationDuration,
@@ -53,7 +57,10 @@ class _AnimatedTabBarState extends State<AnimatedTabBar>
                     const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                 child: Row(
                   children: <Widget>[
-                    Icon(item.icon),
+                    Icon(
+                      item.icon,
+                      color: isSelected ? item.color : Colors.black,
+                    ),
                     SizedBox(
                       width: 8,
                     ),
@@ -61,7 +68,13 @@ class _AnimatedTabBarState extends State<AnimatedTabBar>
                         curve: Curves.easeInOutSine,
                         duration: widget.animationDuration,
                         vsync: this,
-                        child: Text(isSelected ? item.text : '')),
+                        child: Text(
+                          isSelected ? item.text : '',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            color: item.color,
+                          ),
+                        )),
                   ],
                 ),
               ),

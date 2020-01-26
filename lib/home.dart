@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fdesign/animated_tab_bar.dart';
 
 class Home extends StatefulWidget {
-  final List<TabBarItem> barItems = [
+  final List<TabBarItem> tabBarItems = [
     TabBarItem(
       icon: Icons.home,
       text: 'Início',
@@ -21,17 +21,25 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int selectedTabBarIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: AnimatedContainer(
+        duration: Duration(milliseconds: 500),
         child: Center(
           child: Text('Esse é o ínicio'),
         ),
-        color: Colors.redAccent,
+        color: widget.tabBarItems[selectedTabBarIndex].color,
       ),
       bottomNavigationBar: AnimatedTabBar(
-        tabBarItems: widget.barItems,
+        onTap: (int index) {
+          setState(() {
+            selectedTabBarIndex = index;
+          });
+        },
+        tabBarItems: widget.tabBarItems,
         animationDuration: const Duration(milliseconds: 400),
       ),
     );
