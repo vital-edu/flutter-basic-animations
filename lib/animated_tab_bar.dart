@@ -1,4 +1,4 @@
-import 'package:fdesign/tab_bar_item.dart';
+import 'package:fdesign/models/tab_bar_item.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedTabBar extends StatefulWidget {

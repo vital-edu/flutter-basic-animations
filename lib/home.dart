@@ -1,4 +1,6 @@
-import 'package:fdesign/tab_bar_item.dart';
+import 'package:fdesign/apartments_table.dart';
+import 'package:fdesign/models/apartment_cell.dart';
+import 'package:fdesign/models/tab_bar_item.dart';
 import 'package:flutter/material.dart';
 import 'package:fdesign/animated_tab_bar.dart';
 
@@ -16,6 +18,12 @@ class Home extends StatefulWidget {
     ),
   ];
 
+  final List<ApartmentCell> apartmentCells = [
+    ApartmentCell(title: 'Item A', image: '1.jpg', description: '123123'),
+    ApartmentCell(title: 'Item B', image: '2.jpg', description: '123123'),
+    ApartmentCell(title: 'Item C', image: '3.jpg', description: '123123'),
+  ];
+
   @override
   State<StatefulWidget> createState() => _HomeState();
 }
@@ -29,7 +37,7 @@ class _HomeState extends State<Home> {
       body: AnimatedContainer(
         duration: Duration(milliseconds: 500),
         child: Center(
-          child: Text('Esse é o ínicio'),
+          child: ApartmentsTable(cells: widget.apartmentCells),
         ),
         color: widget.tabBarItems[selectedTabBarIndex].color,
       ),
