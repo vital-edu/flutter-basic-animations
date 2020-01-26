@@ -19,9 +19,12 @@ class Home extends StatefulWidget {
   ];
 
   final List<ApartmentCell> apartmentCells = [
-    ApartmentCell(title: 'Item A', image: '1.jpg', description: '123123'),
-    ApartmentCell(title: 'Item B', image: '2.jpg', description: '123123'),
-    ApartmentCell(title: 'Item C', image: '3.jpg', description: '123123'),
+    ApartmentCell(
+        title: 'Item A', image: 'images/1.jpg', description: '123123'),
+    ApartmentCell(
+        title: 'Item B', image: 'images/2.jpg', description: '123123'),
+    ApartmentCell(
+        title: 'Item C', image: 'images/3.jpg', description: '123123'),
   ];
 
   @override
@@ -37,7 +40,22 @@ class _HomeState extends State<Home> {
       body: AnimatedContainer(
         duration: Duration(milliseconds: 500),
         child: Center(
-          child: ApartmentsTable(cells: widget.apartmentCells),
+          child: Padding(
+            padding:
+                const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                Text(
+                  'Apartments',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+                ),
+                ApartmentsTable(cells: widget.apartmentCells),
+              ],
+            ),
+          ),
         ),
         color: widget.tabBarItems[selectedTabBarIndex].color,
       ),
