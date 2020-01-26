@@ -21,8 +21,13 @@ class _AnimatedTabBarState extends State<AnimatedTabBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Row(
-        children: _buildTabBarItems(),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+        child: Row(
+          children: _buildTabBarItems(),
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+        ),
       ),
     );
   }
@@ -34,8 +39,11 @@ class _AnimatedTabBarState extends State<AnimatedTabBar> {
 
       _widgets.add(Row(
         children: <Widget>[
-          Text(item.text),
           Icon(item.icon),
+          SizedBox(
+            width: 8,
+          ),
+          Text(item.text),
         ],
       ));
     }
