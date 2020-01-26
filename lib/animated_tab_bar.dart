@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class TabBarItem {
   final String text;
   final IconData icon;
+  final Color color;
 
-  TabBarItem({this.icon, this.text});
+  TabBarItem({this.icon, this.text, this.color});
 }
 
 class AnimatedTabBar extends StatefulWidget {
@@ -18,9 +19,12 @@ class AnimatedTabBar extends StatefulWidget {
 }
 
 class _AnimatedTabBarState extends State<AnimatedTabBar> {
+  int selectedBarIndex = 0;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Material(
+      elevation: 10,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
         child: Row(
@@ -36,15 +40,23 @@ class _AnimatedTabBarState extends State<AnimatedTabBar> {
     List<Widget> _widgets = List();
     for (int i = 0; i < widget.tabBarItems.length; i++) {
       TabBarItem item = widget.tabBarItems[i];
+      bool isSelected = i == selectedBarIndex;
 
-      _widgets.add(Row(
-        children: <Widget>[
-          Icon(item.icon),
-          SizedBox(
-            width: 8,
-          ),
-          Text(item.text),
-        ],
+      _widgets.add(GestureDetector(
+        onTap: () => setState(() => selectedBarIndex = i),
+        child: InkWell(
+            splashColor: Colors.red,
+            child: SizedBox(
+              child: Row(
+                children: <Widget>[
+                  Icon(item.icon),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  Text(isSelected ? item.text : ''),
+                ],
+              ),
+            )),
       ));
     }
 

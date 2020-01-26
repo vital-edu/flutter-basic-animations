@@ -3,8 +3,16 @@ import 'package:fdesign/animated_tab_bar.dart';
 
 class Home extends StatefulWidget {
   final List<TabBarItem> barItems = [
-    TabBarItem(icon: Icons.home, text: 'Início'),
-    TabBarItem(icon: Icons.hotel, text: 'Apartamentos'),
+    TabBarItem(
+      icon: Icons.home,
+      text: 'Início',
+      color: Colors.redAccent,
+    ),
+    TabBarItem(
+      icon: Icons.hotel,
+      text: 'Apartamentos',
+      color: Colors.blueAccent,
+    ),
   ];
 
   @override
