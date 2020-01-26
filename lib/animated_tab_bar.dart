@@ -18,7 +18,8 @@ class AnimatedTabBar extends StatefulWidget {
   _AnimatedTabBarState createState() => _AnimatedTabBarState();
 }
 
-class _AnimatedTabBarState extends State<AnimatedTabBar> {
+class _AnimatedTabBarState extends State<AnimatedTabBar>
+    with TickerProviderStateMixin {
   int selectedBarIndex = 0;
 
   @override
@@ -46,15 +47,30 @@ class _AnimatedTabBarState extends State<AnimatedTabBar> {
         onTap: () => setState(() => selectedBarIndex = i),
         child: InkWell(
             splashColor: Colors.red,
-            child: SizedBox(
-              child: Row(
-                children: <Widget>[
-                  Icon(item.icon),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Text(isSelected ? item.text : ''),
-                ],
+            child: AnimatedContainer(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: isSelected
+                    ? Colors.redAccent.withOpacity(0.15)
+                    : Colors.transparent,
+              ),
+              duration: widget.animationDuration,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                child: Row(
+                  children: <Widget>[
+                    Icon(item.icon),
+                    SizedBox(
+                      width: 8,
+                    ),
+                    AnimatedSize(
+                        curve: Curves.easeInOutSine,
+                        duration: widget.animationDuration,
+                        vsync: this,
+                        child: Text(isSelected ? item.text : '')),
+                  ],
+                ),
               ),
             )),
       ));

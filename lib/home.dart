@@ -31,7 +31,7 @@ class _HomeState extends State<Home> {
       ),
       bottomNavigationBar: AnimatedTabBar(
         tabBarItems: widget.barItems,
-        animationDuration: const Duration(milliseconds: 2000),
+        animationDuration: const Duration(milliseconds: 400),
       ),
     );
   }
