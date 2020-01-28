@@ -2,23 +2,16 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 List<String> images = [
-  "assets/image_04.jpg",
-  "assets/image_03.jpg",
-  "assets/image_02.jpg",
-  "assets/image_01.png",
+  "images/2.jpg",
+  "images/1.jpg",
+  "images/3.jpg",
 ];
 
 List<String> title = [
   "Hounted Ground",
   "Fallen In Love",
   "The Dreaming Moon",
-  "Jack the Persian and the Black Castel",
 ];
-
-class CustomIcons {
-  static const IconData menu = IconData(0xe900, fontFamily: "CustomIcons");
-  static const IconData option = IconData(0xe902, fontFamily: "CustomIcons");
-}
 
 class TransitionsView extends StatefulWidget {
   @override
@@ -29,7 +22,7 @@ var cardAspectRatio = 12.0 / 16.0;
 var widgetAspectRatio = cardAspectRatio * 1.2;
 
 class _TransitionsViewState extends State<TransitionsView> {
-  var currentPage = images.length - 1.0;
+  double currentPage = images.length - 1.0;
 
   @override
   Widget build(BuildContext context) {
@@ -42,14 +35,16 @@ class _TransitionsViewState extends State<TransitionsView> {
 
     return Container(
       decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [
+        gradient: LinearGradient(
+          colors: [
             Color(0xFF1b1e44),
             Color(0xFF2d3447),
           ],
-              begin: Alignment.bottomCenter,
-              end: Alignment.topCenter,
-              tileMode: TileMode.clamp)),
+          begin: Alignment.bottomCenter,
+          end: Alignment.topCenter,
+          tileMode: TileMode.clamp,
+        ),
+      ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: SingleChildScrollView(
@@ -58,27 +53,6 @@ class _TransitionsViewState extends State<TransitionsView> {
               Padding(
                 padding: const EdgeInsets.only(
                     left: 12.0, right: 12.0, top: 30.0, bottom: 8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    IconButton(
-                      icon: Icon(
-                        CustomIcons.menu,
-                        color: Colors.white,
-                        size: 30.0,
-                      ),
-                      onPressed: () {},
-                    ),
-                    IconButton(
-                      icon: Icon(
-                        Icons.search,
-                        color: Colors.white,
-                        size: 30.0,
-                      ),
-                      onPressed: () {},
-                    )
-                  ],
-                ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -92,14 +66,6 @@ class _TransitionsViewState extends State<TransitionsView> {
                           fontFamily: "Calibre-Semibold",
                           letterSpacing: 1.0,
                         )),
-                    IconButton(
-                      icon: Icon(
-                        CustomIcons.option,
-                        size: 12.0,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {},
-                    )
                   ],
                 ),
               ),
@@ -156,14 +122,6 @@ class _TransitionsViewState extends State<TransitionsView> {
                           fontFamily: "Calibre-Semibold",
                           letterSpacing: 1.0,
                         )),
-                    IconButton(
-                      icon: Icon(
-                        CustomIcons.option,
-                        size: 12.0,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {},
-                    )
                   ],
                 ),
               ),
@@ -202,7 +160,7 @@ class _TransitionsViewState extends State<TransitionsView> {
                     padding: EdgeInsets.only(left: 18.0),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20.0),
-                      child: Image.asset("assets/image_02.jpg",
+                      child: Image.asset("images/1.jpg",
                           width: 296.0, height: 222.0),
                     ),
                   )
@@ -269,16 +227,17 @@ class _CardScrollWidgetState extends State<CardScrollWidget> {
               child: Container(
                 decoration: BoxDecoration(color: Colors.white, boxShadow: [
                   BoxShadow(
-                      color: Colors.black12,
-                      offset: Offset(3.0, 6.0),
-                      blurRadius: 10.0)
+                    color: Colors.black12,
+                    offset: Offset(3.0, 6.0),
+                    blurRadius: 10.0,
+                  )
                 ]),
                 child: AspectRatio(
                   aspectRatio: cardAspectRatio,
                   child: Stack(
                     fit: StackFit.expand,
                     children: <Widget>[
-                      Image.asset(images[i], fit: BoxFit.cover),
+                      Image.asset(images[i], fit: BoxFit.fitHeight),
                       Align(
                         alignment: Alignment.bottomLeft,
                         child: Column(
