@@ -1,6 +1,15 @@
-# fdesign
+# Flutter Animations
 
-A new Flutter project.
+This repository is an experiment to test some Flutter components, learn about animations and page views.
+
+The sidebar is based on the work of:
+- https://github.com/TechieBlossom/sidebar_animation_flutter
+
+The TransitionsView is based on the work of:
+- https://github.com/devefy/Flutter-Story-App-UI
+
+The TabBar is based on the work of:
+- https://github.com/TechieBlossom/simpleanimations/tree/animated_bottom_bar
 
 ## Getting Started
 
