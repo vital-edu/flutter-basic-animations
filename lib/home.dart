@@ -1,5 +1,6 @@
 import 'package:fdesign/models/tab_bar_item.dart';
 import 'package:fdesign/views/apartments_view.dart';
+import 'package:fdesign/sidebar/sidebar.dart';
 import 'package:fdesign/views/transitions_view.dart';
 import 'package:flutter/material.dart';
 import 'package:fdesign/animated_tab_bar.dart';
@@ -45,10 +46,15 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       child: DefaultTabController(
         length: widget.tabs.length,
         child: Scaffold(
-          body: TabBarView(
-            controller: _tabController,
-            physics: NeverScrollableScrollPhysics(),
-            children: widget.tabs,
+          body: Stack(
+            children: <Widget>[
+              TabBarView(
+                controller: _tabController,
+                physics: NeverScrollableScrollPhysics(),
+                children: widget.tabs,
+              ),
+              SideBar(),
+            ],
           ),
           bottomNavigationBar: AnimatedTabBar(
             onTap: (int index) {
