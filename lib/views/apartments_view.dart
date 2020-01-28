@@ -16,22 +16,29 @@ class ApartmentsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        children: <Widget>[
-          Padding(
-            padding:
-                const EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
-            child: Text(
-              'Apartments',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
-            ),
-          ),
-          ApartmentsTable(cells: apartmentCells),
-        ],
+      child: Text(
+        "Outra tela",
+        style: TextStyle(fontWeight: FontWeight.w900, fontSize: 28),
       ),
     );
+
+    // return Center(
+    //   child: Column(
+    //     crossAxisAlignment: CrossAxisAlignment.stretch,
+    //     mainAxisAlignment: MainAxisAlignment.start,
+    //     mainAxisSize: MainAxisSize.max,
+    //     children: <Widget>[
+    //       Padding(
+    //         padding:
+    //             const EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
+    //         child: Text(
+    //           'Apartments',
+    //           style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+    //         ),
+    //       ),
+    //       ApartmentsTable(cells: apartmentCells),
+    //     ],
+    //   ),
+    // );
   }
 }

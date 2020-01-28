@@ -8,9 +8,9 @@ List<String> images = [
 ];
 
 List<String> title = [
-  "Hounted Ground",
-  "Fallen In Love",
-  "The Dreaming Moon",
+  "Área de lazer",
+  "Sala de estar",
+  "Escritó",
 ];
 
 class TransitionsView extends StatefulWidget {
@@ -59,7 +59,7 @@ class _TransitionsViewState extends State<TransitionsView> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text("Trending",
+                    Text("Tendências",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 46.0,
@@ -82,7 +82,7 @@ class _TransitionsViewState extends State<TransitionsView> {
                         child: Padding(
                           padding: EdgeInsets.symmetric(
                               horizontal: 22.0, vertical: 6.0),
-                          child: Text("Animated",
+                          child: Text("Recentes",
                               style: TextStyle(color: Colors.white)),
                         ),
                       ),
@@ -90,7 +90,7 @@ class _TransitionsViewState extends State<TransitionsView> {
                     SizedBox(
                       width: 15.0,
                     ),
-                    Text("25+ Stories",
+                    Text("25 visualizações",
                         style: TextStyle(color: Colors.blueAccent))
                   ],
                 ),
@@ -115,7 +115,7 @@ class _TransitionsViewState extends State<TransitionsView> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text("Favourite",
+                    Text("Favoritos",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 46.0,
@@ -138,7 +138,7 @@ class _TransitionsViewState extends State<TransitionsView> {
                         child: Padding(
                           padding: EdgeInsets.symmetric(
                               horizontal: 22.0, vertical: 6.0),
-                          child: Text("Latest",
+                          child: Text("Última",
                               style: TextStyle(color: Colors.white)),
                         ),
                       ),
@@ -146,7 +146,7 @@ class _TransitionsViewState extends State<TransitionsView> {
                     SizedBox(
                       width: 15.0,
                     ),
-                    Text("9+ Stories",
+                    Text("9 visualizações",
                         style: TextStyle(color: Colors.blueAccent))
                   ],
                 ),
@@ -246,12 +246,16 @@ class _CardScrollWidgetState extends State<CardScrollWidget> {
                           children: <Widget>[
                             Padding(
                               padding: EdgeInsets.symmetric(
-                                  horizontal: 16.0, vertical: 8.0),
-                              child: Text(title[i],
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 25.0,
-                                      fontFamily: "SF-Pro-Text-Regular")),
+                                horizontal: 16.0,
+                                vertical: 8.0,
+                              ),
+                              child: Text(
+                                title[i],
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 25.0,
+                                    fontFamily: "SF-Pro-Text-Regular"),
+                              ),
                             ),
                             SizedBox(
                               height: 10.0,
@@ -261,12 +265,17 @@ class _CardScrollWidgetState extends State<CardScrollWidget> {
                                   left: 12.0, bottom: 12.0),
                               child: Container(
                                 padding: EdgeInsets.symmetric(
-                                    horizontal: 22.0, vertical: 6.0),
+                                  horizontal: 22.0,
+                                  vertical: 6.0,
+                                ),
                                 decoration: BoxDecoration(
-                                    color: Colors.blueAccent,
-                                    borderRadius: BorderRadius.circular(20.0)),
-                                child: Text("Read Later",
-                                    style: TextStyle(color: Colors.white)),
+                                  color: Colors.blueAccent,
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                                child: Text(
+                                  "Ver detalhes",
+                                  style: TextStyle(color: Colors.white),
+                                ),
                               ),
                             )
                           ],
