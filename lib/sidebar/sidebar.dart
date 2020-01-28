@@ -81,7 +81,7 @@ class _SideBarState extends State<SideBar>
           ),
           Expanded(
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 8),
               color: const Color(0xFF262AAA),
               child: Column(
                 children: <Widget>[
@@ -93,7 +93,7 @@ class _SideBarState extends State<SideBar>
                       "@usuario",
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 30,
+                          fontSize: 16,
                           fontWeight: FontWeight.w800),
                     ),
                     leading: CircleAvatar(
