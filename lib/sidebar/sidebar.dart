@@ -15,8 +15,10 @@ class _SideBarState extends State<SideBar>
   @override
   void initState() {
     super.initState();
-    _animationController =
-        AnimationController(vsync: this, duration: _animationDuration);
+    _animationController = AnimationController(
+      vsync: this,
+      duration: _animationDuration,
+    );
   }
 
   @override
@@ -50,10 +52,33 @@ class _SideBarState extends State<SideBar>
       duration: _animationDuration,
       top: 0,
       bottom: 0,
-      left: isSidebarOpened ? 0 : -screenWidth,
-      right: isSidebarOpened ? screenWidth * 0.3 : screenWidth - 45,
+      left: isSidebarOpened ? screenWidth * 0.3 : screenWidth - 40,
+      right: isSidebarOpened ? 0 : -screenWidth,
       child: Row(
         children: <Widget>[
+          Align(
+            alignment: Alignment(0, -0.9),
+            child: GestureDetector(
+              onTap: () {
+                onIconPressed();
+              },
+              child: ClipPath(
+                clipper: CustomMenuClipper(),
+                child: Container(
+                  width: 35,
+                  height: 110,
+                  color: Color(0xFF262AAA),
+                  alignment: Alignment.centerRight,
+                  child: AnimatedIcon(
+                    progress: _animationController.view,
+                    icon: AnimatedIcons.menu_close,
+                    color: Color(0xFF1BB5FD),
+                    size: 25,
+                  ),
+                ),
+              ),
+            ),
+          ),
           Expanded(
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -104,29 +129,6 @@ class _SideBarState extends State<SideBar>
               ),
             ),
           ),
-          Align(
-            alignment: Alignment(0, -0.9),
-            child: GestureDetector(
-              onTap: () {
-                onIconPressed();
-              },
-              child: ClipPath(
-                clipper: CustomMenuClipper(),
-                child: Container(
-                  width: 35,
-                  height: 110,
-                  color: Color(0xFF262AAA),
-                  alignment: Alignment.centerLeft,
-                  child: AnimatedIcon(
-                    progress: _animationController.view,
-                    icon: AnimatedIcons.menu_close,
-                    color: Color(0xFF1BB5FD),
-                    size: 25,
-                  ),
-                ),
-              ),
-            ),
-          ),
         ],
       ),
     );
@@ -143,11 +145,8 @@ class CustomMenuClipper extends CustomClipper<Path> {
     final height = size.height;
 
     Path path = Path();
-    path.moveTo(0, 0);
-    path.quadraticBezierTo(0, 8, 10, 16);
-    path.quadraticBezierTo(width - 1, height / 2 - 20, width, height / 2);
-    path.quadraticBezierTo(width + 1, height / 2 + 20, 10, height - 16);
-    path.quadraticBezierTo(0, height - 8, 0, height);
+    path.moveTo(width, 0);
+    path.quadraticBezierTo(-30, height / 2, width, height);
     path.close();
     return path;
   }
